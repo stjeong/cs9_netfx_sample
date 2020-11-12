@@ -23,6 +23,18 @@ class Program
     }
 }
 
+public class PointF
+{
+    public int Y
+    {
+        get => Y;
+        init
+        {
+            Y = value;
+        }
+    }
+}
+
 public record Point
 {
     public int X { get; init; }
