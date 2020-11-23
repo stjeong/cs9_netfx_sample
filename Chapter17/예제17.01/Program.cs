@@ -18,6 +18,8 @@ class Program
 
             dict[pt2] = false;
             Console.WriteLine(dict[pt1]);
+
+            (int x, int y) = pt1;
         }
 
         {
@@ -49,6 +51,21 @@ class Program
             PointF pt3 = pt with { Y = pt.Y + 3.0f };
             PointF pt4 = pt with { X = pt.X + 2.0f, Y = pt.Y + 3.0f };
         }
+
+        {
+            Point3D pt1 = new Point3D(5.0f, 6.0f, 3.5f);
+            (float x, float y, float z) = pt1;
+
+            Point3D pt2 = pt1 with { Y = 3.5f };
+        }
+
+        {
+            Point3D pt1 = new Point3D() { X = 5.0f, Y = 6.0f, Z = 7.0f };
+            (float x, float y, float z) = pt1;
+
+            Point3D pt2 = pt1 with { Y = 3.5f };
+        }
+
     }
 }
 
@@ -56,6 +73,11 @@ public record PointF
 {
     public float X { get; init; }
     public float Y { get; init; }
+}
+
+public record Point3D(float X, float Y, float Z)
+{
+    public Point3D() : this(0.0f, 0.0f, 0.0f) { }
 }
 
 public class Vector
@@ -93,6 +115,12 @@ public class Point
     public int X => _x;
     public int Y => _y;
     */
+
+    public void Deconstruct(out int x, out int y)
+    {
+        x = X;
+        y = Y;
+    }
 
     public Point(int x, int y)
     {

@@ -35,13 +35,9 @@ public class PointF
     }
 }
 
-public record Point
+public record Point(int X, int Y)
 {
-    public int X { get; init; }
-    public int Y { get; init; }
-
     public Point() : this(0, 0) { }
-    public Point(int x, int y) { X = x; Y = y; }
 }
 
 #if !NET5_0
